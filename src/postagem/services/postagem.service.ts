@@ -11,11 +11,20 @@ export class PostagemService {
   ) {}
 
   async findAll(): Promise<Postagem[]> {
-    return this.postagemRepository.find();
+    return this.postagemRepository.find({
+      relations: {
+        tema: true,
+      },
+    });
   }
 
   async findById(id: number): Promise<Postagem> {
-    const postagem = await this.postagemRepository.findOne({ where: { id } });
+    const postagem = await this.postagemRepository.findOne({
+      where: { id },
+      relations: {
+        tema: true,
+      },
+    });
     if (!postagem) throw new NotFoundException('Postagem não encontrada');
     return postagem;
   }
@@ -24,6 +33,9 @@ export class PostagemService {
     return this.postagemRepository.find({
       where: {
         titulo: ILike(`%${titulo}%`),
+      },
+      relations: {
+        tema: true,
       },
     });
   }
