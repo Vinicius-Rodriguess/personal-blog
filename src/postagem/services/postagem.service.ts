@@ -2,12 +2,14 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Postagem } from '../entitties/postagem.entity';
 import { DeleteResult, ILike, Repository } from 'typeorm';
+import { TemaService } from '../../tema/services/tema.service';
 
 @Injectable()
 export class PostagemService {
   constructor(
     @InjectRepository(Postagem)
     private readonly postagemRepository: Repository<Postagem>,
+    private readonly temaService: TemaService,
   ) {}
 
   async findAll(): Promise<Postagem[]> {
@@ -41,11 +43,13 @@ export class PostagemService {
   }
 
   async create(postagem: Postagem): Promise<Postagem> {
+    await this.temaService.findById(postagem.tema.id);
     return await this.postagemRepository.save(postagem);
   }
 
   async update(postagem: Postagem): Promise<Postagem> {
     await this.findById(postagem.id);
+    await this.temaService.findById(postagem.tema.id);
     return await this.postagemRepository.save(postagem);
   }
 
