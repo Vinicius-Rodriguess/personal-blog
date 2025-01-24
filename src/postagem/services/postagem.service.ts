@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Postagem } from '../entitties/postagem.entity';
+import { Postagem } from '../entities/postagem.entity';
 import { DeleteResult, ILike, Repository } from 'typeorm';
 import { TemaService } from '../../tema/services/tema.service';
 

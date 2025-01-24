@@ -12,7 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { PostagemService } from '../services/postagem.service';
-import { Postagem } from '../entitties/postagem.entity';
+import { Postagem } from '../entities/postagem.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
