@@ -18,7 +18,6 @@ import { ProdService } from './data/services/prod.service';
       useClass: ProdService,
       imports: [ConfigModule],
     }),
-    ,
     PostagemModule,
     TemaModule,
     AuthModule,
