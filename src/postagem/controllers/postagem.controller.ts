@@ -11,12 +11,15 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { PostagemService } from '../services/postagem.service';
-import { Postagem } from '../entities/postagem.entity';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { Postagem } from '../entities/postagem.entity';
+import { PostagemService } from '../services/postagem.service';
 
+@ApiTags('Postagem')
 @UseGuards(JwtAuthGuard)
 @Controller('/postagens')
+@ApiBearerAuth()
 export class PostagemController {
   constructor(private readonly postagemService: PostagemService) {}
 
@@ -50,7 +53,7 @@ export class PostagemController {
     return this.postagemService.update(postagem);
   }
 
-  @Delete(':id')
+  @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.postagemService.delete(id);
