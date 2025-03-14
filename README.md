@@ -104,5 +104,5 @@ Este projeto é a API back-end para um sistema de blog pessoal. Desenvolvido com
 
 **Vinicius Rodrigues**
 
-- GitHub: [SeuUsuario](https://github.com/Vinicius-Rodriguess)
+- GitHub: [Vinicius-Rodriguess](https://github.com/Vinicius-Rodriguess)
 - Email: rodrigues.vini.2004@gmail.com
